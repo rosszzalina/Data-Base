@@ -8,17 +8,18 @@ public class Patient {
     double age;
     double height;
     double weight;
-    boolean gender;
+    Gender gender;
     int heartRate;
     Vector<Diseases> ChronicDiseases;
 
-    public Patient(String name, double age, double height, int heartRate, double weight, Vector<Diseases> diseases) {
+    public Patient(String name, double age, double height, int heartRate, double weight, Gender gender, Vector<Diseases> diseases) {
         if (validBody(name, age, height, heartRate, weight)) {
             this.name = name;
             this.age = age;
             this.height = height;
             this.weight = weight;
             this.heartRate = heartRate;
+            this.gender = gender;
             this.ChronicDiseases = diseases;
         } else {
             throw new IllegalArgumentException("Invalid patient details provided.");
@@ -27,27 +28,25 @@ public class Patient {
 
     private boolean validBody(String name, double age, double height, int heartRate, double weight) {
         boolean isValid = true;
-        if (age < 0) {
-            System.out.println("Age cannot be negative!");
-            isValid = false;
-        } else if (age > 122) {
-            System.out.println("Age is too high!");
+
+        if (age < 0 || age > 122) {
+            System.out.println("Invalid age. Age must be between 0 and 122 years.");
             isValid = false;
         }
 
-        if (height < 54.6 || height > 272) { // cm
-            System.out.println("Height exceeds the Guinness World Record limits!");
+        if (height < 54.6 || height > 272) {
+            System.out.println("Invalid height. Height must be between 54.6 cm and 272 cm.");
             isValid = false;
         }
 
-        if (weight < 2.1 || weight > 635) { // weight in kg
-            System.out.println("Weight exceeds the realistic human limits!");
+        if (weight < 2.1 || weight > 635) {
+            System.out.println("Invalid weight. Weight must be between 2.1 kg and 635 kg.");
             isValid = false;
         }
 
         int maxHeartRate = 220 - (int) age;
         if (heartRate < 30 || heartRate > maxHeartRate) {
-            System.out.println("Heart rate is outside the normal range!");
+            System.out.println("Invalid heart rate. Heart rate must be within realistic limits.");
             isValid = false;
         }
 
@@ -65,6 +64,24 @@ public class Patient {
             return "Overweight";
         } else {
             return "Obese";
+        }
+    }
+
+    public double calculateWaterIntake() { // daily dose of water in liters
+        return this.weight / 30.0;
+    }
+
+    public double calculateWaterCups() { // daily dose of water in cups
+        double waterIntakeLiters = this.weight / 30.0;
+        return (waterIntakeLiters * 1000) / 250;
+    }
+
+    public double calculateBFP() { // body fat percentage
+        double bmi = this.weight / Math.pow(this.height / 100.0, 2); // BMI calculation
+        if (this.gender == Gender.Male) {
+            return 1.20 * bmi + 0.23 * this.age - 16.2;
+        } else {
+            return 1.20 * bmi + 0.23 * this.age - 5.4;
         }
     }
 
@@ -101,6 +118,14 @@ public class Patient {
 
     public Vector<Diseases> getDiseases() {
         return ChronicDiseases;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public void setName(String name) {
