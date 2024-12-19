@@ -12,7 +12,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
+import java.util.Vector;
+
+import java.util.ArrayList;
 
 public class AdviceController {
 
@@ -21,12 +25,32 @@ public class AdviceController {
         @FXML
         private AnchorPane anchor;
         @FXML
-        private Button getBackButton;
+        private Button getBackButton, generateAdvice;
 
-        private Patient patient;
+        List<Diseases> diseases = new ArrayList<>();
+        Diseases dis1 = Diseases.DIABETES;
+        Diseases dis2 = Diseases.DIABETES;
+        diseases.add(dis1);
+        diseases.add(dis2);
+
+        private Patient patient = new Patient(
+                "John",   // First name
+                "Doe",    // Surname
+                45.0,     // Age
+                175.0,    // Height in cm
+                72,       // Heart rate
+                80.0,     // Weight in kg
+                Gender.Male, // Gender
+                diseases  // Chronic diseases
+        );
+
 
         public void setPatient(Patient patient) {
             this.patient = patient;
+        }
+
+        @FXML
+        private void initialize() {
             generateAdvice();
         }
 

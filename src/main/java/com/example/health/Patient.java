@@ -1,10 +1,10 @@
 package com.example.health;
 
-import java.util.ArrayList;
 import java.util.Vector;
 
 public class Patient {
     String name;
+    String surname;
     double age;
     double height;
     double weight;
@@ -12,9 +12,10 @@ public class Patient {
     int heartRate;
     Vector<Diseases> ChronicDiseases;
 
-    public Patient(String name, double age, double height, int heartRate, double weight, Gender gender, Vector<Diseases> diseases) {
-        if (validBody(name, age, height, heartRate, weight)) {
+    public Patient(String name, String surname, double age, double height, int heartRate, double weight, Gender gender, Vector<Diseases> diseases) {
+        if (validBody(name, surname, age, height, heartRate, weight)) {
             this.name = name;
+            this.surname = surname;
             this.age = age;
             this.height = height;
             this.weight = weight;
@@ -26,27 +27,31 @@ public class Patient {
         }
     }
 
-    private boolean validBody(String name, double age, double height, int heartRate, double weight) {
+    private boolean validBody(String name, String surname, double age, double height, int heartRate, double weight) {
         boolean isValid = true;
 
+        if (name == null || name.trim().isEmpty()) {
+            isValid = false;
+        }
+
+        if (surname == null || surname.trim().isEmpty()) {
+            isValid = false;
+        }
+
         if (age < 0 || age > 122) {
-            System.out.println("Invalid age. Age must be between 0 and 122 years.");
             isValid = false;
         }
 
         if (height < 54.6 || height > 272) {
-            System.out.println("Invalid height. Height must be between 54.6 cm and 272 cm.");
             isValid = false;
         }
 
         if (weight < 2.1 || weight > 635) {
-            System.out.println("Invalid weight. Weight must be between 2.1 kg and 635 kg.");
             isValid = false;
         }
 
         int maxHeartRate = 220 - (int) age;
         if (heartRate < 30 || heartRate > maxHeartRate) {
-            System.out.println("Invalid heart rate. Heart rate must be within realistic limits.");
             isValid = false;
         }
 
@@ -67,17 +72,17 @@ public class Patient {
         }
     }
 
-    public double calculateWaterIntake() { // daily dose of water in liters
+    public double calculateWaterIntake() {
         return this.weight / 30.0;
     }
 
-    public double calculateWaterCups() { // daily dose of water in cups
+    public double calculateWaterCups() {
         double waterIntakeLiters = this.weight / 30.0;
         return (waterIntakeLiters * 1000) / 250;
     }
 
-    public double calculateBFP() { // body fat percentage
-        double bmi = this.weight / Math.pow(this.height / 100.0, 2); // BMI calculation
+    public double calculateBFP() {
+        double bmi = this.weight / Math.pow(this.height / 100.0, 2);
         if (this.gender == Gender.Male) {
             return 1.20 * bmi + 0.23 * this.age - 16.2;
         } else {
@@ -98,6 +103,10 @@ public class Patient {
 
     public String getName() {
         return name;
+    }
+
+    public String getSurname() {
+        return surname;
     }
 
     public double getAge() {
@@ -130,6 +139,10 @@ public class Patient {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public void setAge(double age) {
