@@ -4,9 +4,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import com.example.health.Gender?>
-
-
 
 <AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.health.HelloController">
     <children>
@@ -23,15 +20,7 @@
 
             <!-- Gender selection -->
             <Label text="Select Gender:" />
-            <ComboBox fx:id="genderComboBox">
-
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <Gender fx:constant="Male" />
-                        <Gender fx:constant="Female" />
-                    </FXCollections>
-                </items>
-            </ComboBox>
+            <ComboBox fx:id="genderComboBox" />
 
             <!-- Chronic diseases selection -->
             <Label text="Select Chronic Diseases:" />
