@@ -2,11 +2,22 @@ package com.example.health;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class HelloController {
 
+    @FXML
+    private AnchorPane anchor;
     @FXML
     private TextField heightField;
     @FXML
@@ -41,11 +52,11 @@ public class HelloController {
         );
         chosenDiseases = FXCollections.observableArrayList();
 
-        // Set up ChoiceBox and ListView
+
         diseasesChoiceBox.setItems(allDiseases);
         chosenDiseasesListView.setItems(chosenDiseases);
 
-        // Event to add a chosen disease to the ListView
+
         diseasesChoiceBox.setOnAction(event -> {
             String selectedDisease = diseasesChoiceBox.getValue();
             if (selectedDisease != null && !chosenDiseases.contains(selectedDisease)) {
@@ -55,7 +66,7 @@ public class HelloController {
             }
         });
 
-        // Event to remove a disease from the ListView
+
         chosenDiseasesListView.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) { // Double-click to remove
                 String selectedDisease = chosenDiseasesListView.getSelectionModel().getSelectedItem();
@@ -67,15 +78,15 @@ public class HelloController {
         });
     }
 
-    private void showErrorDialog() {
+    private void showErrorDialog(String text) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Validation Error");
-        alert.setHeaderText("All fields except diseases must be filled.");
+        alert.setHeaderText(text);
         alert.showAndWait();
     }
 
     @FXML
-    private void handleSubmitButtonAction() {
+    private void handleSubmitButtonAction(ActionEvent actionEvent) throws IOException {
         if (nameField.getText().isEmpty() ||
                 surnameField.getText().isEmpty() ||
                 heightField.getText().isEmpty() ||
@@ -84,10 +95,10 @@ public class HelloController {
                 birthDatePicker.getValue() == null ||
                 (!male.isSelected() && !female.isSelected())) {
 
-            showErrorDialog();
+            showErrorDialog("All fields except diseases must be filled.");
             return;
         }
-        // Get form data
+
         String name = nameField.getText();
         String surname = surnameField.getText();
         String height = heightField.getText();
@@ -111,5 +122,20 @@ public class HelloController {
         System.out.println("Heart Rate: " + heartRate);
         System.out.println("Gender: " + (gender != null ? gender.name() : "Not selected"));
         System.out.println("Diseases: " + selectedDiseases);
+
+        Parent parent;
+        try {
+            parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/health/advice-view.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorDialog("Something went Wrong");
+            return;
+        }
+
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) anchor.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("Advice Window");
+        stage.centerOnScreen();
     }
 }

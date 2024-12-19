@@ -1,12 +1,27 @@
 package com.example.health;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
-    public class AdviceController {
+import java.io.IOException;
+import java.util.Objects;
+
+public class AdviceController {
 
         @FXML
         private Label adviceLabel;
+        @FXML
+        private AnchorPane anchor;
+        @FXML
+        private Button getBackButton;
 
         private Patient patient;
 
@@ -33,4 +48,29 @@ import javafx.scene.control.Label;
 
             adviceLabel.setText(advice.toString());
         }
+
+        @FXML
+        private void getBack(ActionEvent actionEvent) throws IOException {
+            Parent parent;
+            try {
+                parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/health/hello-view.fxml")));
+            } catch (IOException e) {
+                e.printStackTrace();
+                showErrorDialog("Something went wrong");
+                return;
+            }
+
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) anchor.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Registration");
+            stage.centerOnScreen();
+        }
+        private void showErrorDialog(String text) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Validation Error");
+            alert.setHeaderText(text);
+            alert.showAndWait();
+        }
+
 }
