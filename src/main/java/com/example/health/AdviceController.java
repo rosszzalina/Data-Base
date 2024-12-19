@@ -27,11 +27,8 @@ public class AdviceController {
         @FXML
         private Button getBackButton, generateAdvice;
 
-        List<Diseases> diseases = new ArrayList<>();
-        Diseases dis1 = Diseases.DIABETES;
-        Diseases dis2 = Diseases.DIABETES;
-        diseases.add(dis1);
-        diseases.add(dis2);
+        Vector<Diseases> diseases;
+
 
         private Patient patient = new Patient(
                 "John",   // First name
@@ -41,7 +38,7 @@ public class AdviceController {
                 72,       // Heart rate
                 80.0,     // Weight in kg
                 Gender.Male, // Gender
-                diseases  // Chronic diseases
+                diseases // Chronic diseases
         );
 
 
