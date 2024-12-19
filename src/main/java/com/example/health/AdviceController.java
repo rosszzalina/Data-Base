@@ -36,8 +36,6 @@ public class AdviceController {
 
     @FXML
     private void initialize() {
-        diseases.add(Diseases.DIABETES);
-        diseases.add(Diseases.HEART_DISEASE);
         patient = new Patient(
                 "John",   // First name
                 "Doe",    // Surname
