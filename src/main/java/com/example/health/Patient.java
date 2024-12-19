@@ -1,18 +1,19 @@
 package com.example.health;
 
-import java.util.Vector;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 public class Patient {
     String name;
     String surname;
-    double age;
+    int age;
     double height;
     double weight;
     Gender gender;
     int heartRate;
-    Vector<Diseases> ChronicDiseases;
+    ObservableList<Diseases> ChronicDiseases;
 
-    public Patient(String name, String surname, double age, double height, int heartRate, double weight, Gender gender, Vector<Diseases> diseases) {
+    public Patient(String name, String surname, int age, double height, int heartRate, double weight, Gender gender, ObservableList<Diseases> diseases) {
         if (validBody(name, surname, age, height, heartRate, weight)) {
             this.name = name;
             this.surname = surname;
@@ -23,11 +24,19 @@ public class Patient {
             this.gender = gender;
             this.ChronicDiseases = diseases;
         } else {
-            throw new IllegalArgumentException("Invalid patient details provided.");
+
+            showErrorDialog("Invalid patient details provided.");
         }
     }
 
-    private boolean validBody(String name, String surname, double age, double height, int heartRate, double weight) {
+    static void showErrorDialog(String text) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText(text);
+        alert.showAndWait();
+    }
+
+    private boolean validBody(String name, String surname, int age, double height, int heartRate, double weight) {
         boolean isValid = true;
 
         if (name == null || name.trim().isEmpty()) {
@@ -50,9 +59,10 @@ public class Patient {
             isValid = false;
         }
 
-        int maxHeartRate = 220 - (int) age;
+        int maxHeartRate = 220 - age;
         if (heartRate < 30 || heartRate > maxHeartRate) {
             isValid = false;
+            System.out.println("Heart rate must be between 30 and " + maxHeartRate + " bpm.");
         }
 
         return isValid;
@@ -91,7 +101,7 @@ public class Patient {
     }
 
     public String getHeartRateAnalysis() {
-        int maxHeartRate = 220 - (int) this.age;
+        int maxHeartRate = 220 -  this.age;
         if (this.heartRate < 60) {
             return "Bradycardia";
         } else if (this.heartRate <= maxHeartRate * 0.85) {
@@ -125,7 +135,7 @@ public class Patient {
         return heartRate;
     }
 
-    public Vector<Diseases> getDiseases() {
+    public ObservableList<Diseases> getDiseases() {
         return ChronicDiseases;
     }
 
@@ -145,7 +155,7 @@ public class Patient {
         this.surname = surname;
     }
 
-    public void setAge(double age) {
+    public void setAge(int age) {
         if (age < 0 || age > 122) {
             throw new IllegalArgumentException("Invalid age. Age must be between 0 and 122 years.");
         }
@@ -167,13 +177,13 @@ public class Patient {
     }
 
     public void setHeartRate(int heartRate) {
-        if (heartRate < 30 || heartRate > 220 - (int) this.age) {
+        if (heartRate < 30 || heartRate > 220 - this.age) {
             throw new IllegalArgumentException("Invalid heart rate. Heart rate must be between 30 bpm and the maximum for the patient's age.");
         }
         this.heartRate = heartRate;
     }
 
-    public void setDiseases(Vector<Diseases> diseases) {
+    public void setDiseases(ObservableList<Diseases> diseases) {
         this.ChronicDiseases = diseases;
     }
 }

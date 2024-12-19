@@ -12,7 +12,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Calendar;
 import java.util.Objects;
+
+import static java.lang.Integer.parseInt;
 
 public class HelloController {
 
@@ -35,20 +42,20 @@ public class HelloController {
     @FXML
     private RadioButton male;
     @FXML
-    private ChoiceBox<String> diseasesChoiceBox;
+    private ChoiceBox<Diseases> diseasesChoiceBox;
     @FXML
-    private ListView<String> chosenDiseasesListView;
+    private ListView<Diseases> chosenDiseasesListView;
 
     @FXML
     private Button submitButton;
 
-    private ObservableList<String> allDiseases;
-    private ObservableList<String> chosenDiseases;
+    private ObservableList<Diseases> allDiseases;
+    private ObservableList<Diseases> chosenDiseases;
 
     @FXML
     private void initialize() {
         allDiseases = FXCollections.observableArrayList(
-                "Diabetes", "Hypertension", "Asthma"
+                Diseases.DIABETES, Diseases.ALZHEIMERS_DISEASE, Diseases.ADHD
         );
         chosenDiseases = FXCollections.observableArrayList();
 
@@ -58,7 +65,7 @@ public class HelloController {
 
 
         diseasesChoiceBox.setOnAction(event -> {
-            String selectedDisease = diseasesChoiceBox.getValue();
+            Diseases selectedDisease = diseasesChoiceBox.getValue();
             if (selectedDisease != null && !chosenDiseases.contains(selectedDisease)) {
                 chosenDiseases.add(selectedDisease);
                 allDiseases.remove(selectedDisease);
@@ -69,7 +76,7 @@ public class HelloController {
 
         chosenDiseasesListView.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) { // Double-click to remove
-                String selectedDisease = chosenDiseasesListView.getSelectionModel().getSelectedItem();
+                Diseases selectedDisease = chosenDiseasesListView.getSelectionModel().getSelectedItem();
                 if (selectedDisease != null) {
                     chosenDiseases.remove(selectedDisease);
                     allDiseases.add(selectedDisease);
@@ -78,12 +85,6 @@ public class HelloController {
         });
     }
 
-    private void showErrorDialog(String text) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Validation Error");
-        alert.setHeaderText(text);
-        alert.showAndWait();
-    }
 
     @FXML
     private void handleSubmitButtonAction(ActionEvent actionEvent) throws IOException {
@@ -95,7 +96,7 @@ public class HelloController {
                 birthDatePicker.getValue() == null ||
                 (!male.isSelected() && !female.isSelected())) {
 
-            showErrorDialog("All fields except diseases must be filled.");
+            Patient.showErrorDialog("All fields except diseases must be filled.");
             return;
         }
 
@@ -110,25 +111,33 @@ public class HelloController {
         } else if (female.isSelected()) {
             gender = Gender.Female;
         }
-        String birthDate = birthDatePicker.getValue() != null ? birthDatePicker.getValue().toString() : "Not selected";
+        String birthDate = birthDatePicker.getValue().toString();
+        String firstFourChars = birthDate.substring(0, 4);
+        int birthYear = Integer.parseInt(firstFourChars);
+        int currentYear = LocalDate.now().getYear();
+        int age = currentYear - birthYear;
 
-        ObservableList<String> selectedDiseases = FXCollections.observableArrayList(chosenDiseases);
+        ObservableList<Diseases> selectedDiseases = FXCollections.observableArrayList(chosenDiseases);
 
         System.out.println("Name: " + name);
         System.out.println("Surname: " + surname);
         System.out.println("Birthdate: " + birthDate);
+        System.out.println("Age: " + age);
+        System.out.println("Age: " + age);
         System.out.println("Height: " + height);
         System.out.println("Weight: " + weight);
         System.out.println("Heart Rate: " + heartRate);
-        System.out.println("Gender: " + (gender != null ? gender.name() : "Not selected"));
+        System.out.println("Gender: " + gender);
         System.out.println("Diseases: " + selectedDiseases);
+        Patient newPatient = new Patient(name, surname, parseInt(heartRate), Double.parseDouble(height), age, Double.parseDouble(weight), gender, selectedDiseases);
+        System.out.println(newPatient);
 
         Parent parent;
         try {
             parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/health/advice-view.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
-            showErrorDialog("Something went Wrong");
+            Patient.showErrorDialog("Something went Wrong");
             return;
         }
 

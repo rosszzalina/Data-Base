@@ -1,5 +1,6 @@
 package com.example.health;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +27,7 @@ public class AdviceController {
     @FXML
     private Button getBackButton, generateAdvice;
 
-    private Vector<Diseases> diseases;
+    private ObservableList<Diseases> diseases;
 
     private Patient patient;
 
@@ -39,7 +40,7 @@ public class AdviceController {
         patient = new Patient(
                 "John",   // First name
                 "Doe",    // Surname
-                45.0,     // Age
+                45,     // Age
                 175.0,    // Height in cm
                 72,       // Heart rate
                 80.0,     // Weight in kg
