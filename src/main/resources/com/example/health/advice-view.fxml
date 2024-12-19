@@ -3,16 +3,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-
 
 <AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.health.AdviceController">
    <children>
-      <Label layoutX="286.0" layoutY="124.0" text="Hell yeah">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
+      <Label fx:id="adviceLabel" layoutX="179.0" layoutY="61.0" text="Hell yeah" />
       <Button fx:id="getBackButton" layoutX="252.0" layoutY="279.0" mnemonicParsing="false" onAction="#getBack" text="GET BACK" />
    </children>
 </AnchorPane>
