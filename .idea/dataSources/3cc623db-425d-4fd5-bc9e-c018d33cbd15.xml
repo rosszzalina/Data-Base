@@ -3,15 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <Grants>1||-9223372036854775808|c|G
-1||10|c|G
-1||10|C|G
-1||10|T|G
-4||-9223372036854775808|c|G
-4||10|c|G
-4||10|C|G
-4||10|T|G</Grants>
-      <IntrospectionStateNumber>853</IntrospectionStateNumber>
+      <IntrospectionStateNumber>910</IntrospectionStateNumber>
       <ServerVersion>17.2</ServerVersion>
       <StartupTime>1734402809</StartupTime>
       <TimeZones>true ACDT
@@ -808,7 +800,7 @@ false Zulu
 14704||10|C|G
 14704||-9223372036854775808|U|G
 14704||10|U|G</Grants>
-      <IntrospectionStateNumber>853</IntrospectionStateNumber>
+      <IntrospectionStateNumber>910</IntrospectionStateNumber>
       <ObjectId>16387</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4235,8 +4227,8 @@ false Zulu
     <schema id="265" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>853</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-12-18.12:34:28</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>910</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-12-19.12:24:11</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>532</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -4293,7 +4285,7 @@ false Zulu
     </table>
     <table id="273" parent="265" name="patient">
       <ObjectId>16389</ObjectId>
-      <StateNumber>850</StateNumber>
+      <StateNumber>909</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
@@ -4312,10 +4304,10 @@ false Zulu
       <SequenceId>16433</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="276" parent="270" name="user_id">
+    <column id="276" parent="270" name="disease_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>753</StateNumber>
+      <StateNumber>897</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
@@ -4390,8 +4382,9 @@ false Zulu
       <TypeId>23</TypeId>
     </column>
     <column id="286" parent="272" name="disease_id">
+      <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>752</StateNumber>
+      <StateNumber>900</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
@@ -4410,21 +4403,18 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16396</RefTableId>
     </foreign-key>
-    <index id="289" parent="272" name="diseaseadvice_pkey">
-      <ColNames>advice_id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16426</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>752</StateNumber>
+    <index id="289" parent="272" name="diseaseadvice_unique">
+      <ColNames>advice_id
+disease_id</ColNames>
+      <ObjectId>16501</ObjectId>
+      <StateNumber>903</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="290" parent="272" name="diseaseadvice_pkey">
-      <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16427</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>752</StateNumber>
-      <UnderlyingIndexId>16426</UnderlyingIndexId>
+    <key id="290" parent="272" name="diseaseadvice_unique">
+      <ObjectId>16502</ObjectId>
+      <StateNumber>903</StateNumber>
+      <UnderlyingIndexId>16501</UnderlyingIndexId>
     </key>
     <column id="291" parent="273" name="patient_id">
       <DefaultExpression>nextval(&apos;patients_patient_id_seq&apos;::regclass)</DefaultExpression>
@@ -4477,7 +4467,13 @@ false Zulu
       <StoredType>text[]|0s</StoredType>
       <TypeId>1009</TypeId>
     </column>
-    <index id="299" parent="273" name="patients_pkey">
+    <column id="299" parent="273" name="surname">
+      <Position>9</Position>
+      <StateNumber>909</StateNumber>
+      <StoredType>varchar|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="300" parent="273" name="patients_pkey">
       <ColNames>patient_id</ColNames>
       <ObjectId>16393</ObjectId>
       <Primary>1</Primary>
@@ -4485,27 +4481,27 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="300" parent="273" name="patients_pkey">
+    <key id="301" parent="273" name="patients_pkey">
       <ObjectId>16394</ObjectId>
       <Primary>1</Primary>
       <StateNumber>748</StateNumber>
       <UnderlyingIndexId>16393</UnderlyingIndexId>
     </key>
-    <column id="301" parent="274" name="patient_id">
+    <column id="302" parent="274" name="patient_id">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>751</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="302" parent="274" name="disease_id">
+    <column id="303" parent="274" name="disease_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>751</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="303" parent="274" name="patientdisease_patient_id_fkey">
+    <foreign-key id="304" parent="274" name="patientdisease_patient_id_fkey">
       <ColNames>patient_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16409</ObjectId>
@@ -4513,7 +4509,7 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16389</RefTableId>
     </foreign-key>
-    <foreign-key id="304" parent="274" name="patientdisease_disease_id_fkey">
+    <foreign-key id="305" parent="274" name="patientdisease_disease_id_fkey">
       <ColNames>disease_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16414</ObjectId>
@@ -4521,7 +4517,7 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16396</RefTableId>
     </foreign-key>
-    <index id="305" parent="274" name="patientdisease_pkey">
+    <index id="306" parent="274" name="patientdisease_pkey">
       <ColNames>patient_id
 disease_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
@@ -4531,7 +4527,7 @@ disease_id</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="306" parent="274" name="patientdisease_pkey">
+    <key id="307" parent="274" name="patientdisease_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16408</ObjectId>
       <Primary>1</Primary>

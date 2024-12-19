@@ -7,18 +7,19 @@ import java.sql.SQLException;
 
 public class PatientCRUD {
 
-    public void createPatient(int patientId, String name, double age, double height, double weight, String gender, int heartRate, String[] chronicDiseases) {
-        String sql = "INSERT INTO Patient (patient_id, name, age, height, weight, gender, heart_rate, chronic_diseases) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    public void createPatient(int patientId, String name,String surname, double age, double height, double weight, String gender, int heartRate, String[] chronicDiseases) {
+        String sql = "INSERT INTO Patient (patient_id, name,surname, age, height, weight, gender, heart_rate, chronic_diseases) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = db.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, patientId);
             pstmt.setString(2, name);
-            pstmt.setDouble(3, age);
-            pstmt.setDouble(4, height);
-            pstmt.setDouble(5, weight);
-            pstmt.setString(6, gender);
-            pstmt.setInt(7, heartRate);
-            pstmt.setArray(8, conn.createArrayOf("varchar", chronicDiseases));
+            pstmt.setString(3, surname);
+            pstmt.setDouble(4, age);
+            pstmt.setDouble(5, height);
+            pstmt.setDouble(6, weight);
+            pstmt.setString(7, gender);
+            pstmt.setInt(8, heartRate);
+            pstmt.setArray(9, conn.createArrayOf("varchar", chronicDiseases));
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
