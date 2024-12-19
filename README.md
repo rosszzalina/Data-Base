@@ -12,7 +12,6 @@ Health Track is a CRUD (Create, Read, Update, Delete) system designed to help us
 7. **Health Tips**: Periodic notifications with general health tips.
 8. **Interactive Dashboard**: A user-friendly interface for visualizing tracked data.
 9. **Search Functionality**: Enables users to search records by name or other parameters.
-10. **Multi-Language Support**: Offers support for multiple languages, including Kyrgyz and English.
 
 ## Team Members
 - **Member 1**: Kozhomberdiev Kalys 
