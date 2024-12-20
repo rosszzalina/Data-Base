@@ -9,27 +9,30 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Objects;
-import java.util.ArrayList;
-import java.util.Vector;
 
 public class AdviceController {
 
+    @FXML
+    private ImageView profile1;
     @FXML
     private Label adviceLabel;
     @FXML
     private AnchorPane anchor;
     @FXML
     private Button getBackButton, generateAdvice;
-
+    @FXML
     private ObservableList<Diseases> diseases;
 
     private Patient patient;
+
+//    Image profile = new Image("images/profile.png");
 
     public void setPatient(Patient patient) {
         this.patient = patient;
@@ -47,7 +50,9 @@ public class AdviceController {
                 Gender.Male, // Gender
                 diseases  // Chronic diseases
         );
-        generateAdvice();
+        setPatient(patient);
+//        profile1.setImage(profile);
+//        generateAdvice();
     }
 
     private void generateAdvice() {
@@ -59,7 +64,6 @@ public class AdviceController {
         advice.append("Daily Water Intake: ").append(String.format("%.2f liters", patient.calculateWaterIntake())).append(" (or ")
                 .append(String.format("%.0f cups", patient.calculateWaterCups())).append(")\n\n");
 
-        // Ensure diseases is properly populated
         if (patient.getDiseases() != null && !patient.getDiseases().isEmpty()) {
             advice.append("Chronic Diseases: \n");
             for (Diseases disease : patient.getDiseases()) {

@@ -14,6 +14,7 @@ public class Patient {
     ObservableList<Diseases> ChronicDiseases;
 
     public Patient(String name, String surname, int age, double height, int heartRate, double weight, Gender gender, ObservableList<Diseases> diseases) {
+        System.out.println(heartRate);
         if (validBody(name, surname, age, height, heartRate, weight)) {
             this.name = name;
             this.surname = surname;
@@ -24,7 +25,6 @@ public class Patient {
             this.gender = gender;
             this.ChronicDiseases = diseases;
         } else {
-
             showErrorDialog("Invalid patient details provided.");
         }
     }

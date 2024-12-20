@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.health.AdviceController">
+<AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #4e586e;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.health.AdviceController">
    <children>
-      <Label fx:id="adviceLabel" layoutX="179.0" layoutY="61.0" text="Hell yeah" />
-      <Button fx:id="getBackButton" layoutX="252.0" layoutY="279.0" mnemonicParsing="false" onAction="#getBack" text="GET BACK" />
+      <Button fx:id="getBackButton" layoutX="545.0" layoutY="447.0" mnemonicParsing="false" onAction="#getBack" style="-fx-background-color: .button1;" styleClass="button1" stylesheets="@style.css" text="Change Profile" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

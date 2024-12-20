@@ -123,13 +123,12 @@ public class HelloController {
         System.out.println("Surname: " + surname);
         System.out.println("Birthdate: " + birthDate);
         System.out.println("Age: " + age);
-        System.out.println("Age: " + age);
         System.out.println("Height: " + height);
         System.out.println("Weight: " + weight);
         System.out.println("Heart Rate: " + heartRate);
         System.out.println("Gender: " + gender);
         System.out.println("Diseases: " + selectedDiseases);
-        Patient newPatient = new Patient(name, surname, parseInt(heartRate), Double.parseDouble(height), age, Double.parseDouble(weight), gender, selectedDiseases);
+        Patient newPatient = new Patient(name, surname, age,  Double.parseDouble(height), parseInt(heartRate), Double.parseDouble(weight), gender, selectedDiseases);
         System.out.println(newPatient);
 
         Parent parent;
