@@ -129,6 +129,7 @@ public class HelloController {
         System.out.println("Gender: " + gender);
         System.out.println("Diseases: " + selectedDiseases);
         Patient newPatient = new Patient(name, surname, age,  Double.parseDouble(height), parseInt(heartRate), Double.parseDouble(weight), gender, selectedDiseases);
+        Patient.right = true;
         System.out.println(newPatient);
 
         Parent parent;

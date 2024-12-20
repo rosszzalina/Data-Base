@@ -25,8 +25,8 @@ Health Track is a CRUD (Create, Read, Update, Delete) system designed to help us
 - **Nazarova Ayana** - VFX design and implementation of user interface
 
 ## Screenshots
-![Dashboard Screenshot](path/to/screenshot1.png)
-![Health Data Input Form](path/to/screenshot2.png)
+![Dashboard Screenshot](src/main/resources/ex2.png)
+![Health Data Input Form](src/main/resources/ex1.png)
 
 ## UML Class Diagram
 The following UML Class Diagram illustrates the system’s structure:
