@@ -67,7 +67,7 @@ public class AdviceController {
             showAdviceDialog(advice, selectedDisease.toString());
             patientDiseases.setValue(null);
         });
-//        Image profile = new Image(getClass().getResourceAsStream("/images/profile.png"));
+//        Image profile = new Image(HelloApplication.class.getResource("/images/profile.png").toString());
 //        profile1.setImage(profile);
 //        generateAdvice();
     }
