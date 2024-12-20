@@ -3,15 +3,42 @@
 Health Track is a CRUD (Create, Read, Update, Delete) system designed to help users monitor their health parameters in alignment with the World Health Organization (WHO) guidelines. Users can input health-related data such as age, weight, height, heart rate, and chronic diseases. The system provides personalized advice based on WHO standards.
 
 ## Features
-1. **Track Health Data**: Input and manage health parameters such as age, weight, height, heart rate, and chronic diseases.
-2. **WHO Guidelines**: Offers reliable advice based on the latest WHO recommendations.
-3. **CRUD Operations**: Users can perform Create, Read, Update, and Delete operations on their health records.
-4. **Age Norms**: Provides insights for users aged 1-18 based on WHO growth charts.
-5. **Secure Storage**: Health data is securely stored locally in `patients.txt`.
-6. **Data Export**: Allows users to export their health data to a CSV file for further analysis.
-7. **Health Tips**: Periodic notifications with general health tips.
-8. **Interactive Dashboard**: A user-friendly interface for visualizing tracked data.
-9. **Search Functionality**: Enables users to search records by name or other parameters.
+1. **Track Health Data**  
+   Input and manage important health parameters such as **age**, **weight**, **height**, **heart rate**, and chronic diseases. The system dynamically calculates and displays relevant health information based on user input.
+
+2. **Personalized Health Dashboard**  
+   Display a **personalized health summary** that includes details like the user's **name**, **age**, **height**, **weight**, **heart rate**, and **daily water intake recommendations**.
+
+3. **Disease Advice Generation**  
+   Get **tailored health advice** based on selected chronic diseases, such as **diabetes**, **Alzheimer's disease**, and **ADHD**. The system provides specific guidance to manage each disease, including lifestyle changes, medications, and other recommendations.
+
+4. **BMI and Body Fat Percentage Analysis**  
+   Calculate and **analyze BMI** (Body Mass Index) to provide users with insights into their overall health. Additionally, the app calculates and explains the **body fat percentage**, helping users understand their body composition.
+
+5. **Heart Rate Monitoring**  
+   Receive **heart rate analysis** to understand cardiovascular health. This feature helps users monitor their heart rate and assess how it relates to their fitness and well-being.
+
+6. **Chronic Disease Tracking**  
+   Track **chronic diseases** and manage them effectively by receiving relevant advice on how to live with and manage conditions like diabetes, Alzheimer's, and ADHD.
+
+7. **Water Intake Recommendations**  
+   The system suggests **optimal water intake** based on user data, offering both the recommended amount in liters and the equivalent in cups to ensure hydration.
+
+8. **Profile Image**  
+   Users can **upload and view a profile image**, adding a personal touch to their health dashboard and enhancing the user experience.
+
+9. **Interactive UI**  
+   The app features an **interactive user interface** with buttons for generating advice, selecting chronic diseases, and navigating between various sections, such as the health profile and disease-specific advice.
+
+10. **Back Navigation**  
+    Users can **navigate back** to previous views, providing easy access to different sections of the application.
+
+11. **WHO Guidelines Integration**  
+    The app integrates reliable recommendations based on **WHO (World Health Organization) guidelines**, ensuring that users receive up-to-date and evidence-based health advice.
+
+12. **Error Handling and User Feedback**  
+    The application provides **error handling** mechanisms and **user feedback** through informative dialog boxes in case of data input errors or other issues, guiding users through the process.
+
 
 ## Team Members
 - **Member 1**: Kozhomberdiev Kalys 
@@ -20,9 +47,9 @@ Health Track is a CRUD (Create, Read, Update, Delete) system designed to help us
 
 
 ## Roles of Group Members
-- **Kozhomberdiev Kalys** - Main logic of the app
+- **Kozhomberdiev Kalys** - VFX design and implementation of user interface
 - **Akylbekova Rozalina** - DataBase structure and its CRUD operations
-- **Nazarova Ayana** - VFX design and implementation of user interface
+- **Nazarova Ayana** - Patient logic
 
 ## Screenshots
 ![Dashboard Screenshot](src/main/resources/ex2.png)
@@ -42,7 +69,7 @@ A detailed commit history, starting at least three weeks before the submission d
 
 ## Submission
 The GitHub repository link:
-[Health Track System Repository](https://github.com/your-repo-link)
+[Health Track System Repository](https://github.com/rosszzalina/Health-Trackerr)
 
 ---
 
