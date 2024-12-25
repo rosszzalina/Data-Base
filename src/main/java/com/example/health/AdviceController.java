@@ -20,14 +20,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class AdviceController {
-    String name;
-     String surname;
-    int age;
-     double height;
-     double weight;
-     Gender gender;
-     int heartRate;
-    ObservableList<Diseases> ChronicDiseases;
 
     @FXML
     private ImageView profile1;
@@ -69,8 +61,7 @@ public class AdviceController {
 
     @FXML
     private void initialize() {
-        patient = new Patient(name, surname, age, height, heartRate, weight, gender, diseases);
-
+        patient = new Patient("John","Doe",45, 175.0, 72, 80.0, Gender.Male, diseases);
         setPatient(patient);
         fullName.setText(patient.name + " " + patient.surname);
         Age.setText("Age: " + patient.age);

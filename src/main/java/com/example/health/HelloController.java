@@ -52,9 +52,6 @@ public class HelloController {
     private ObservableList<Diseases> allDiseases;
     private ObservableList<Diseases> chosenDiseases;
 
-    private final PatientCRUD patientCRUD = new PatientCRUD();
-
-
     @FXML
     private void initialize() {
         allDiseases = FXCollections.observableArrayList(
@@ -105,9 +102,9 @@ public class HelloController {
 
         String name = nameField.getText();
         String surname = surnameField.getText();
-        double height = Double.parseDouble(heightField.getText());
-        double weight = Double.parseDouble(weightField.getText());
-        int heartRate = Integer.parseInt(heartRateField.getText());
+        String height = heightField.getText();
+        String weight = weightField.getText();
+        String heartRate = heartRateField.getText();
         Gender gender = null;
         if (male.isSelected()) {
             gender = Gender.Male;
@@ -131,7 +128,7 @@ public class HelloController {
         System.out.println("Heart Rate: " + heartRate);
         System.out.println("Gender: " + gender);
         System.out.println("Diseases: " + selectedDiseases);
-        Patient newPatient = new Patient(name, surname, age,  Double.parseDouble(String.valueOf(height)), parseInt(String.valueOf(heartRate)), Double.parseDouble(String.valueOf(weight)), gender, selectedDiseases);
+        Patient newPatient = new Patient(name, surname, age,  Double.parseDouble(height), parseInt(heartRate), Double.parseDouble(weight), gender, selectedDiseases);
         System.out.println(newPatient);
 
         Parent parent;

@@ -4,26 +4,27 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
 public class Patient {
-    String name;
-    String surname;
-    int age;
-    double height;
-    double weight;
-    Gender gender;
-    int heartRate;
-    ObservableList<Diseases> ChronicDiseases;
+    static String name;
+    static String surname;
+    static int age;
+    static double height;
+    static double weight;
+    static Gender gender;
+    static int heartRate;
+    static ObservableList<Diseases> ChronicDiseases;
+    static boolean right = false;
 
     public Patient(String name, String surname, int age, double height, int heartRate, double weight, Gender gender, ObservableList<Diseases> diseases) {
         System.out.println(heartRate);
         if (validBody(name, surname, age, height, heartRate, weight)) {
-            this.name = name;
-            this.surname = surname;
-            this.age = age;
-            this.height = height;
-            this.weight = weight;
-            this.heartRate = heartRate;
-            this.gender = gender;
-            this.ChronicDiseases = diseases;
+            Patient.name = name;
+            Patient.surname = surname;
+            Patient.age = age;
+            Patient.height = height;
+            Patient.weight = weight;
+            Patient.heartRate = heartRate;
+            Patient.gender = gender;
+            ChronicDiseases = diseases;
         } else {
             showErrorDialog("Invalid patient details provided.");
         }
@@ -71,9 +72,9 @@ public class Patient {
         return isValid;
     }
 
-    public String getBMIAnalysis() {
-        double heightInMeters = this.height / 100;
-        double bmi = this.weight / (heightInMeters * heightInMeters);
+    public static String getBMIAnalysis() {
+        double heightInMeters = height / 100;
+        double bmi = weight / (heightInMeters * heightInMeters);
         if (bmi < 18.5) {
             return "Underweight";
         } else if (bmi >= 18.5 && bmi < 24.9) {
@@ -85,40 +86,40 @@ public class Patient {
         }
     }
 
-    public double calculateWaterIntake() {
-        return this.weight / 30.0;
+    public static double calculateWaterIntake() {
+        return weight / 30.0;
     }
 
-    public double calculateWaterCups() {
-        double waterIntakeLiters = this.weight / 30.0;
+    public static double calculateWaterCups() {
+        double waterIntakeLiters = weight / 30.0;
         return (waterIntakeLiters * 1000) / 250;
     }
 
-    public double calculateBFP() {
-        double bmi = this.weight / Math.pow(this.height / 100.0, 2);
-        if (this.gender == Gender.Male) {
-            return 1.20 * bmi + 0.23 * this.age - 16.2;
+    public static double calculateBFP() {
+        double bmi = weight / Math.pow(height / 100.0, 2);
+        if (gender == Gender.Male) {
+            return 1.20 * bmi + 0.23 * age - 16.2;
         } else {
-            return 1.20 * bmi + 0.23 * this.age - 5.4;
+            return 1.20 * bmi + 0.23 * age - 5.4;
         }
     }
 
-    public String getHeartRateAnalysis() {
-        int maxHeartRate = 220 -  this.age;
-        if (this.heartRate < 60) {
+    public static String getHeartRateAnalysis() {
+        int maxHeartRate = 220 -  age;
+        if (heartRate < 60) {
             return "Bradycardia";
-        } else if (this.heartRate <= maxHeartRate * 0.85) {
+        } else if (heartRate <= maxHeartRate * 0.85) {
             return "Normal";
         } else {
             return "Tachycardia";
         }
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
-    public String getSurname() {
+    public static String getSurname() {
         return surname;
     }
 
@@ -138,55 +139,55 @@ public class Patient {
         return heartRate;
     }
 
-    public ObservableList<Diseases> getDiseases() {
+    public static ObservableList<Diseases> getDiseases() {
         return ChronicDiseases;
     }
 
-    public Gender getGender() {
+    public static Gender getGender() {
         return gender;
     }
 
     public void setGender(Gender gender) {
-        this.gender = gender;
+        Patient.gender = gender;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Patient.name = name;
     }
 
     public void setSurname(String surname) {
-        this.surname = surname;
+        Patient.surname = surname;
     }
 
     public void setAge(int age) {
         if (age < 0 || age > 122) {
             throw new IllegalArgumentException("Invalid age. Age must be between 0 and 122 years.");
         }
-        this.age = age;
+        Patient.age = age;
     }
 
     public void setHeight(double height) {
         if (height < 54.6 || height > 272) {
             throw new IllegalArgumentException("Invalid height. Height must be between 54.6 cm and 272 cm.");
         }
-        this.height = height;
+        Patient.height = height;
     }
 
     public void setWeight(double weight) {
         if (weight < 2.1 || weight > 635) {
             throw new IllegalArgumentException("Invalid weight. Weight must be between 2.1 kg and 635 kg.");
         }
-        this.weight = weight;
+        Patient.weight = weight;
     }
 
     public void setHeartRate(int heartRate) {
-        if (heartRate < 30 || heartRate > 220 - this.age) {
+        if (heartRate < 30 || heartRate > 220 - age) {
             throw new IllegalArgumentException("Invalid heart rate. Heart rate must be between 30 bpm and the maximum for the patient's age.");
         }
-        this.heartRate = heartRate;
+        Patient.heartRate = heartRate;
     }
 
     public void setDiseases(ObservableList<Diseases> diseases) {
-        this.ChronicDiseases = diseases;
+        ChronicDiseases = diseases;
     }
 }
