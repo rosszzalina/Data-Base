@@ -49,52 +49,60 @@ public class AdviceController {
     private Label WaterPerDay;
     @FXML
     private ChoiceBox<Diseases> patientDiseases;
+    private Patient patient;
+
+
+
+
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 
     @FXML
     private void initialize() {
-        fullName.setText(Patient.name + " " + Patient.surname);
-        Age.setText("Age: " + Patient.age);
-        Height.setText("Height: " + Patient.height + " cm");
-        Weight.setText("Weight: " + Patient.weight + " kg");
-        HeartBeat.setText("HB: " + Patient.heartRate + " per/m");
-        Gender1.setText("Gender: " + Patient.getGender());
-        WaterPerDay.setText(String.format("%.2f liters", Patient.calculateWaterIntake()) + " (or " + String.format("%.0f cups", Patient.calculateWaterCups()) + ")\n\n");
-        ObservableList<Diseases> allDiseases = Patient.getDiseases();
+        patient = new Patient("John","Doe",45, 175.0, 72, 80.0, Gender.Male, diseases);
+        setPatient(patient);
+        fullName.setText(patient.name + " " + patient.surname);
+        Age.setText("Age: " + patient.age);
+        Height.setText("Height: " + patient.height + " cm");
+        Weight.setText("Weight: " + patient.weight + " kg");
+        HeartBeat.setText("HB: " + patient.heartRate + " per/m");
+        Gender1.setText("Gender: " + patient.getGender());
+        WaterPerDay.setText(String.format("%.2f liters", patient.calculateWaterIntake()) + " (or " + String.format("%.0f cups", patient.calculateWaterCups()) + ")\n\n");
+        ObservableList<Diseases> allDiseases = patient.getDiseases();
         patientDiseases.setItems(allDiseases);
         patientDiseases.setOnAction(event -> {
             Diseases selectedDisease = patientDiseases.getValue();
-            String advice = getDiseaseAdvice(selectedDisease);
-            showAdviceDialog(advice, selectedDisease.toString());
+            if (selectedDisease != null) {
+                String advice = getDiseaseAdvice(selectedDisease);
+                showAdviceDialog(advice, selectedDisease.toString());
+            } else {
+                showErrorDialog("Please select a disease to get advice.");
+            }
             patientDiseases.setValue(null);
         });
-//        Image profile = new Image(HelloApplication.class.getResource("/images/profile.png").toString());
+//        Image profile = new Image(getClass().getResourceAsStream("/images/profile.png"));
 //        profile1.setImage(profile);
 //        generateAdvice();
     }
 
     String getDiseaseAdvice(Diseases disease) {
-        if (disease == Diseases.DIABETES) {
-            return "For diabetes, it's important to monitor blood sugar levels regularly. Follow a balanced diet, avoid high sugar intake, exercise regularly, and take medications as prescribed.";
-        } else if (disease == Diseases.ALZHEIMERS_DISEASE) {
-            return "For Alzheimer's disease, maintaining mental stimulation through puzzles, reading, and social activities can be helpful. Stay physically active, follow a balanced diet, and ensure proper medication adherence.";
-        } else if (disease == Diseases.ADHD) {
-            return "For ADHD, it's essential to create a structured environment, minimize distractions, and follow a regular routine. Medication and behavioral therapy can be helpful in managing symptoms.";
-        } else {
-            return "No specific advice available for this disease.";
-        }
+        String advices = "drink it";
+        return advices;
     }
 
 
     private void generateAdvice() {
         StringBuilder advice = new StringBuilder();
-        advice.append("Welcome, ").append(Patient.getName() + " " + Patient.getSurname() + "!\n\n");
-        advice.append("BMI Analysis: ").append(Patient.getBMIAnalysis()).append("\n");
-        advice.append("Body Fat Percentage: ").append(String.format("%.2f%%", Patient.calculateBFP())).append("\n");
-        advice.append("Heart Rate Analysis: ").append(Patient.getHeartRateAnalysis()).append("\n");
+        advice.append("Welcome, ").append(patient.getName() + " " + patient.getSurname() + "!\n\n");
+        advice.append("BMI Analysis: ").append(patient.getBMIAnalysis()).append("\n");
+        advice.append("Body Fat Percentage: ").append(String.format("%.2f%%", patient.calculateBFP())).append("\n");
+        advice.append("Heart Rate Analysis: ").append(patient.getHeartRateAnalysis()).append("\n");
 
-        if (Patient.getDiseases() != null && !Patient.getDiseases().isEmpty()) {
+        if (patient.getDiseases() != null && !patient.getDiseases().isEmpty()) {
             advice.append("Chronic Diseases: \n");
-            for (Diseases disease : Patient.getDiseases()) {
+            for (Diseases disease : patient.getDiseases()) {
                 advice.append("- ").append(disease.name()).append("\n");
             }
         }
@@ -112,7 +120,7 @@ public class AdviceController {
             showErrorDialog("Something went wrong");
             return;
         }
-        Patient.right = false;
+
         Scene scene = new Scene(parent);
         Stage stage = (Stage) anchor.getScene().getWindow();
         stage.setScene(scene);

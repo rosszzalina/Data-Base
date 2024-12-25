@@ -7,12 +7,12 @@ import java.sql.SQLException;
 
 public class AdviceCRUD {
 
-    public void createAdvice(int adviceId, int patientId, String adviceText) {
-        String sql = "INSERT INTO Advice (advice_id, patient_id, advice) VALUES (?, ?, ?)";
+    public void createAdvice(int adviceId, int diseaseId, String adviceText) {
+        String sql = "INSERT INTO Advice (advice_id, disease_id, advice) VALUES (?, ?, ?)";
         try (Connection conn = db.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, adviceId);
-            pstmt.setInt(2, patientId);
+            pstmt.setInt(2, diseaseId);
             pstmt.setString(3, adviceText);
             pstmt.executeUpdate();
         } catch (SQLException e) {

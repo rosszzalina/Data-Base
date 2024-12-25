@@ -7,9 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #4e586e;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.health.AdviceController">
+<AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #4e586e;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.health.AdviceController">
    <children>
-      <Button fx:id="getBackButton" layoutX="545.0" layoutY="447.0" mnemonicParsing="false" onAction="#getBack" style="-fx-background-color: .button1;" styleClass="button1" stylesheets="@style.css" text="Change Profile" textFill="WHITE">
+      <Button fx:id="getBackButton" layoutX="545.0" layoutY="447.0" mnemonicParsing="false" onAction="#getBack"
+              styleClass="button1" stylesheets="@style.css" text="Change Profile" textFill="WHITE">
+         <style>-fx-background-color: .button1;</style>
          <font>
             <Font size="18.0" />
          </font></Button>

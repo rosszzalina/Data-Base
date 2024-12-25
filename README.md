@@ -55,7 +55,7 @@ Health Track is a CRUD (Create, Read, Update, Delete) system designed to help us
 ## UML Class Diagram
 The following UML Class Diagram illustrates the system’s structure:
 
-![UML Class Diagram](src/main/resources/UML-Diagram.png)
+![UML Class Diagram](UML-Diagram.png)
 
 ## Weekly Meeting Documentation
 Weekly meeting notes and discussions are documented in a Google Doc. Summaries of each meeting are uploaded to the GitHub repository under 
