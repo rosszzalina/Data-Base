@@ -52,6 +52,8 @@ public class HelloController {
     private ObservableList<Diseases> allDiseases;
     private ObservableList<Diseases> chosenDiseases;
 
+    PatientCRUD pationCRUD = new PatientCRUD();
+
     @FXML
     private void initialize() {
         allDiseases = FXCollections.observableArrayList(
@@ -129,6 +131,12 @@ public class HelloController {
         System.out.println("Gender: " + gender);
         System.out.println("Diseases: " + selectedDiseases);
         Patient newPatient = new Patient(name, surname, age,  Double.parseDouble(height), parseInt(heartRate), Double.parseDouble(weight), gender, selectedDiseases);
+
+        try {
+            pationCRUD.createPatient(1, name, surname, age,  Double.parseDouble(height), parseInt(heartRate), Double.parseDouble(weight), gender, selectedDiseases);
+        }
+
+        Patient.right = true;
         System.out.println(newPatient);
 
         Parent parent;
