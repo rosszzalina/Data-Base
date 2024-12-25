@@ -59,7 +59,7 @@ The following UML Class Diagram illustrates the system’s structure:
 
 ## Weekly Meeting Documentation
 Weekly meeting notes and discussions are documented in a Google Doc. Summaries of each meeting are uploaded to the GitHub repository under 
-[Weekly Meeting Document](https://docs.google.com/document/d/1HPmCzfYNsO4fHD55rBF3BsIIQqSh1K8uIWr-izR9vKQ/edit?usp=sharing).
+[Weekly Meeting Document](https://docs.google.com/document/d/1_PvYmWlIDevj57fQV20lrFTZC6dWS6nIS1UiOpQGHo4/edit?usp=sharing).
 
 ## Commit History
 A detailed commit history, starting at least three weeks before the submission date, can be reviewed in the GitHub repository. Each commit includes a meaningful message describing the changes made.
