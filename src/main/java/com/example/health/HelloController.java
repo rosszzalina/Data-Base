@@ -133,7 +133,7 @@ public class HelloController {
         Patient newPatient = new Patient(name, surname, age,  Double.parseDouble(height), parseInt(heartRate), Double.parseDouble(weight), gender, selectedDiseases);
 
         try {
-            pationCRUD.createPatient(newPatient);
+            pationCRUD.createPatient(1, name, surname, age,  Double.parseDouble(height), parseInt(heartRate), Double.parseDouble(weight), gender, selectedDiseases);
         }
 
         Patient.right = true;
