@@ -73,9 +73,6 @@ A detailed commit history, starting at least three weeks before the submission d
 - Presentation link:
 [Presentation](https://www.canva.com/design/DAGZwDL7ywI/torTlD1cskQYJF0zGky_LQ/view?utm_content=DAGZwDL7ywI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h39e5718896)
 
-- JAR File:
-
-
 ---
 
 For additional information on WHO guidelines and health recommendations, visit the [WHO Website](https://www.who.int).
