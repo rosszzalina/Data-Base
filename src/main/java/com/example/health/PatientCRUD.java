@@ -26,7 +26,7 @@ public class PatientCRUD {
         }
     }
 
-    public void readPatient(int patientId) {
+    public static void readPatient(int patientId) {
         String sql = "SELECT * FROM Patient WHERE patient_id = ?";
         try (Connection conn = db.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -41,7 +41,7 @@ public class PatientCRUD {
         }
     }
 
-    public void updatePatient(int patientId, String name) {
+    public static void updatePatient(int patientId, String name) {
         String sql = "UPDATE Patient SET name = ? WHERE patient_id = ?";
         try (Connection conn = db.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -53,7 +53,7 @@ public class PatientCRUD {
         }
     }
 
-    public void deletePatient(int patientId) {
+    public static void deletePatient(int patientId) {
         String sql = "DELETE FROM Patient WHERE patient_id = ?";
         try (Connection conn = db.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

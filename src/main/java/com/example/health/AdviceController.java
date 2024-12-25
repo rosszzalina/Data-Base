@@ -61,16 +61,16 @@ public class AdviceController {
 
     @FXML
     private void initialize() {
-        patient = new Patient("John","Doe",45, 175.0, 72, 80.0, Gender.Male, diseases);
+        patient = PatientCRUD.getPatient(1);
         setPatient(patient);
-        fullName.setText(patient.name + " " + patient.surname);
-        Age.setText("Age: " + patient.age);
-        Height.setText("Height: " + patient.height + " cm");
-        Weight.setText("Weight: " + patient.weight + " kg");
-        HeartBeat.setText("HB: " + patient.heartRate + " per/m");
-        Gender1.setText("Gender: " + patient.getGender());
-        WaterPerDay.setText(String.format("%.2f liters", patient.calculateWaterIntake()) + " (or " + String.format("%.0f cups", patient.calculateWaterCups()) + ")\n\n");
-        ObservableList<Diseases> allDiseases = patient.getDiseases();
+        fullName.setText(Patient.name + " " + Patient.surname);
+        Age.setText("Age: " + Patient.age);
+        Height.setText("Height: " + Patient.height + " cm");
+        Weight.setText("Weight: " + Patient.weight + " kg");
+        HeartBeat.setText("HB: " + Patient.heartRate + " per/m");
+        Gender1.setText("Gender: " + Patient.getGender());
+        WaterPerDay.setText(String.format("%.2f liters", Patient.calculateWaterIntake()) + " (or " + String.format("%.0f cups", Patient.calculateWaterCups()) + ")\n\n");
+        ObservableList<Diseases> allDiseases = Patient.getDiseases();
         patientDiseases.setItems(allDiseases);
         patientDiseases.setOnAction(event -> {
             Diseases selectedDisease = patientDiseases.getValue();
@@ -95,14 +95,14 @@ public class AdviceController {
 
     private void generateAdvice() {
         StringBuilder advice = new StringBuilder();
-        advice.append("Welcome, ").append(patient.getName() + " " + patient.getSurname() + "!\n\n");
-        advice.append("BMI Analysis: ").append(patient.getBMIAnalysis()).append("\n");
-        advice.append("Body Fat Percentage: ").append(String.format("%.2f%%", patient.calculateBFP())).append("\n");
-        advice.append("Heart Rate Analysis: ").append(patient.getHeartRateAnalysis()).append("\n");
+        advice.append("Welcome, ").append(Patient.getName()).append(" ").append(Patient.getSurname()).append("!\n\n");
+        advice.append("BMI Analysis: ").append(Patient.getBMIAnalysis()).append("\n");
+        advice.append("Body Fat Percentage: ").append(String.format("%.2f%%", Patient.calculateBFP())).append("\n");
+        advice.append("Heart Rate Analysis: ").append(Patient.getHeartRateAnalysis()).append("\n");
 
-        if (patient.getDiseases() != null && !patient.getDiseases().isEmpty()) {
+        if (Patient.getDiseases() != null && !Patient.getDiseases().isEmpty()) {
             advice.append("Chronic Diseases: \n");
-            for (Diseases disease : patient.getDiseases()) {
+            for (Diseases disease : Patient.getDiseases()) {
                 advice.append("- ").append(disease.name()).append("\n");
             }
         }
@@ -120,7 +120,7 @@ public class AdviceController {
             showErrorDialog("Something went wrong");
             return;
         }
-
+        PatientCRUD.deletePatient(1);
         Scene scene = new Scene(parent);
         Stage stage = (Stage) anchor.getScene().getWindow();
         stage.setScene(scene);
