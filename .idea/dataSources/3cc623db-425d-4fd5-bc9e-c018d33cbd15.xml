@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <IntrospectionStateNumber>1023</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1058</IntrospectionStateNumber>
       <ServerVersion>17.2</ServerVersion>
       <StartupTime>1734402809</StartupTime>
       <TimeZones>true ACDT
@@ -800,7 +800,7 @@ false Zulu
 14704||10|C|G
 14704||-9223372036854775808|U|G
 14704||10|U|G</Grants>
-      <IntrospectionStateNumber>1023</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1058</IntrospectionStateNumber>
       <ObjectId>16387</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4227,8 +4227,8 @@ false Zulu
     <schema id="265" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>1023</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-12-25.01:05:16</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>1058</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-12-25.07:23:42</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>532</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -4469,9 +4469,9 @@ disease_id</ColNames>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="299" parent="273" name="chronic_diseases">
+    <column id="299" parent="273" name="diseases">
       <Position>8</Position>
-      <StateNumber>850</StateNumber>
+      <StateNumber>1057</StateNumber>
       <StoredType>text[]|0s</StoredType>
       <TypeId>1009</TypeId>
     </column>

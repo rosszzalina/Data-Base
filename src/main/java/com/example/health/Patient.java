@@ -11,7 +11,7 @@ public class Patient {
     static double weight;
     static Gender gender;
     static int heartRate;
-    static ObservableList<Diseases> ChronicDiseases;
+    static ObservableList<Diseases> Diseases;
     static boolean right = false;
 
     public Patient(String name, String surname, int age, double height, int heartRate, double weight, Gender gender, ObservableList<Diseases> diseases) {
@@ -24,7 +24,7 @@ public class Patient {
             Patient.weight = weight;
             Patient.heartRate = heartRate;
             Patient.gender = gender;
-            ChronicDiseases = diseases;
+            Diseases = diseases;
         } else {
             showErrorDialog("Invalid patient details provided.");
         }
@@ -140,7 +140,7 @@ public class Patient {
     }
 
     public static ObservableList<Diseases> getDiseases() {
-        return ChronicDiseases;
+        return Diseases;
     }
 
     public static Gender getGender() {
@@ -188,6 +188,6 @@ public class Patient {
     }
 
     public void setDiseases(ObservableList<Diseases> diseases) {
-        ChronicDiseases = diseases;
+        Diseases = diseases;
     }
 }

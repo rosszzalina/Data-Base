@@ -40,11 +40,11 @@ class PatientCRUDTest {
         double weight = 70.0;
         String gender = "Male";
         int heartRate = 70;
-        String[] chronicDiseases = {"Diabetes", "Hypertension"};
+        String[] Diseases = {"Diabetes", "Hypertension"};
 
         // Act
         assertDoesNotThrow(() -> patientCRUD.createPatient(
-                patientId, name, surname, age, height, weight, gender, heartRate, chronicDiseases
+                patientId, name, surname, age, height, weight, gender, heartRate, Diseases
         ));
 
     }
