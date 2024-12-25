@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class PatientCRUD {
 
     public void createPatient(int patientId, String name,String surname, double age, double height, double weight, String gender, int heartRate, String[] chronicDiseases) {
-        String sql = "INSERT INTO Patient (patient_id, name,surname, age, height, weight, gender, heart_rate, chronic_diseases) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Patient (patient_id, name,surname, age, height, weight, gender, heart_rate, chronic_diseases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = db.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, patientId);

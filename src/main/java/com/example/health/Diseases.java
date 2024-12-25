@@ -51,5 +51,7 @@ public enum Diseases {
     HIV, // Human Immunodeficiency Virus
     SICKLE_CELL_ANEMIA,
     PSORIASIS,
-    ECZEMA
+    ECZEMA;
+
+
 }

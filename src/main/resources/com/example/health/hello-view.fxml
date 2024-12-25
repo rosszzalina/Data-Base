@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchor" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.health.HelloController">
+<AnchorPane fx:id="anchor" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.health.HelloController">
     <children>
         <Pane prefHeight="600.0" prefWidth="630.0" style="-fx-background-color: #4e586e;">
             <children>

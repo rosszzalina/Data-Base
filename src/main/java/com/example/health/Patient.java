@@ -36,6 +36,9 @@ public class Patient {
         alert.showAndWait();
     }
 
+    public static void showInfoDialog(String s) {
+    }
+
     private boolean validBody(String name, String surname, int age, double height, int heartRate, double weight) {
         boolean isValid = true;
 

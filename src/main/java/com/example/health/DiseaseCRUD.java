@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class DiseaseCRUD {
 
-    public void createDisease(int diseaseId, String name, String description) {
+    public static boolean createDisease(int diseaseId, String name, String description) {
         String sql = "INSERT INTO Disease (disease_id, name, description) VALUES (?, ?, ?)";
         try (Connection conn = db.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -16,8 +16,9 @@ public class DiseaseCRUD {
             pstmt.setString(3, description);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
+        return false;
     }
 
     public void readDisease(int diseaseId) {
@@ -35,7 +36,7 @@ public class DiseaseCRUD {
         }
     }
 
-    public void updateDisease(int diseaseId, String name) {
+    public void updateDisease(int diseaseId, String name, String updatedDescription) {
         String sql = "UPDATE Disease SET name = ? WHERE disease_id = ?";
         try (Connection conn = db.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -47,7 +48,7 @@ public class DiseaseCRUD {
         }
     }
 
-    public void deleteDisease(int diseaseId) {
+    public boolean deleteDisease(int diseaseId) {
         String sql = "DELETE FROM Disease WHERE disease_id = ?";
         try (Connection conn = db.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -56,6 +57,10 @@ public class DiseaseCRUD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 }
+
+
+
 
