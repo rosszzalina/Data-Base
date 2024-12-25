@@ -24,19 +24,16 @@ Health Track is a CRUD (Create, Read, Update, Delete) system designed to help us
 7. **Water Intake Recommendations**  
    The system suggests **optimal water intake** based on user data, offering both the recommended amount in liters and the equivalent in cups to ensure hydration.
 
-8. **Profile Image**  
-   Users can **upload and view a profile image**, adding a personal touch to their health dashboard and enhancing the user experience.
-
-9. **Interactive UI**  
+8. **Interactive UI**  
    The app features an **interactive user interface** with buttons for generating advice, selecting chronic diseases, and navigating between various sections, such as the health profile and disease-specific advice.
 
-10. **Back Navigation**  
+9. **Back Navigation**  
     Users can **navigate back** to previous views, providing easy access to different sections of the application.
 
-11. **WHO Guidelines Integration**  
+10. **WHO Guidelines Integration**  
     The app integrates reliable recommendations based on **WHO (World Health Organization) guidelines**, ensuring that users receive up-to-date and evidence-based health advice.
 
-12. **Error Handling and User Feedback**  
+11. **Error Handling and User Feedback**  
     The application provides **error handling** mechanisms and **user feedback** through informative dialog boxes in case of data input errors or other issues, guiding users through the process.
 
 
@@ -68,8 +65,14 @@ Weekly meeting notes and discussions are documented in a Google Doc. Summaries o
 A detailed commit history, starting at least three weeks before the submission date, can be reviewed in the GitHub repository. Each commit includes a meaningful message describing the changes made.
 
 ## Submission
-The GitHub repository link:
+- The GitHub repository link:
 [Health Track System Repository](https://github.com/rosszzalina/Health-Trackerr)
+
+- Presentation link:
+[Presentation](https://www.canva.com/design/DAGZwDL7ywI/torTlD1cskQYJF0zGky_LQ/view?utm_content=DAGZwDL7ywI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h39e5718896)
+
+- JAR File:
+
 
 ---
 
