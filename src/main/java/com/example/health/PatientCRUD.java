@@ -9,22 +9,17 @@ import java.sql.SQLException;
 
 public class PatientCRUD {
 
-    public void createPatient(int patientId, String name, String surname, double age, double height, double weight, double gender, Gender heartRate, ObservableList<Diseases> Diseases) {
-        String sql = "INSERT INTO Patient (patient_id, name,surname, age, height, weight, gender, heart_rate, chronic_diseases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public static boolean patientExists(int i) {
+        // Метод реализации для проверки существования пациента
+        String sql = "SELECT 1 FROM Patient WHERE patient_id = ?";
         try (Connection conn = db.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, patientId);
-            pstmt.setString(2, name);
-            pstmt.setString(3, surname);
-            pstmt.setDouble(4, age);
-            pstmt.setDouble(5, height);
-            pstmt.setDouble(6, weight);
-            pstmt.setString(7, gender);
-            pstmt.setInt(8, heartRate);
-            pstmt.setArray(9, conn.createArrayOf("varchar", Diseases));
-            pstmt.executeUpdate();
+            pstmt.setInt(1, i);
+            ResultSet rs = pstmt.executeQuery();
+            return rs.next(); // Возвращает true, если запись найдена
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -64,5 +59,8 @@ public class PatientCRUD {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void createPatient(int i, String name, String surname, int age, double v, int i1, double v1, Gender gender, ObservableList<Diseases> selectedDiseases) {
     }
 }

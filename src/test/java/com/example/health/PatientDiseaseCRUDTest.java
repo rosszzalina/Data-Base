@@ -59,7 +59,7 @@ class PatientDiseaseCRUDTest {
     void createPatientDisease() {
         int patientId = 1;
         int diseaseId = 101;
-        createPatient(patientId, "John Doe");
+        createPatient(patientId, "Natasha Chan");
         createDisease(diseaseId, "Flu");
 
         // Act & Assert
