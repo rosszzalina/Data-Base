@@ -134,6 +134,8 @@ public class HelloController {
 
         try {
             pationCRUD.createPatient(1, name, surname, age,  Double.parseDouble(height), parseInt(heartRate), Double.parseDouble(weight), gender, selectedDiseases);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException(e);
         }
 
         Patient.right = true;

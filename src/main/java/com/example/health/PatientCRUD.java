@@ -1,5 +1,7 @@
 package com.example.health;
 
+import javafx.collections.ObservableList;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,7 +9,7 @@ import java.sql.SQLException;
 
 public class PatientCRUD {
 
-    public void createPatient(int patientId, String name,String surname, double age, double height, double weight, String gender, int heartRate, String[] chronicDiseases) {
+    public void createPatient(int patientId, String name, String surname, double age, double height, double weight, double gender, Gender heartRate, ObservableList<Diseases> Diseases) {
         String sql = "INSERT INTO Patient (patient_id, name,surname, age, height, weight, gender, heart_rate, chronic_diseases) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = db.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -19,7 +21,7 @@ public class PatientCRUD {
             pstmt.setDouble(6, weight);
             pstmt.setString(7, gender);
             pstmt.setInt(8, heartRate);
-            pstmt.setArray(9, conn.createArrayOf("varchar", chronicDiseases));
+            pstmt.setArray(9, conn.createArrayOf("varchar", Diseases));
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
