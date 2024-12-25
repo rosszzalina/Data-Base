@@ -56,9 +56,7 @@ public class HelloController {
 
     @FXML
     private void initialize() {
-        allDiseases = FXCollections.observableArrayList(
-                Diseases.DIABETES, Diseases.ALZHEIMERS_DISEASE, Diseases.ADHD
-        );
+        allDiseases = // get all the diseases with observable array list
         chosenDiseases = FXCollections.observableArrayList();
 
 

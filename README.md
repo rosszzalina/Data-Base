@@ -49,8 +49,10 @@ Health Track is a CRUD (Create, Read, Update, Delete) system designed to help us
 - **Nazarova Ayana** - Patient logic
 
 ## Screenshots
-![Dashboard Screenshot](src/main/resources/ex2.png)
-![Health Data Input Form](src/main/resources/ex1.png)
+![Dashboard Screenshot](https://github.com/user-attachments/assets/ec9a256b-ac01-4a30-a108-cb8fd5b7b0d6)
+
+![Health Data Input Form](https://github.com/user-attachments/assets/80f9d6ab-024f-4002-a6e5-f9521b187c9f)
+
 
 ## UML Class Diagram
 The following UML Class Diagram illustrates the system’s structure:
@@ -70,9 +72,6 @@ A detailed commit history, starting at least three weeks before the submission d
 
 - Presentation link:
 [Presentation](https://www.canva.com/design/DAGZwDL7ywI/torTlD1cskQYJF0zGky_LQ/view?utm_content=DAGZwDL7ywI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h39e5718896)
-
-- JAR File:
-
 
 ---
 
